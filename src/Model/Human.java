@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class Human {
 
     private String firstname;
@@ -51,5 +53,17 @@ public class Human {
         return "\n Full name: " + firstname + lastname + middleName + "\nSex: " + sex;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return Objects.equals(lastname, human.lastname) && Objects.equals(firstname, human.firstname) && Objects.equals(middleName, human.middleName) && Objects.equals(sex, human.sex);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lastname, firstname, middleName, sex);
+    }
 
 }
