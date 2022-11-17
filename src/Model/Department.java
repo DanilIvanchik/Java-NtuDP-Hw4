@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Department extends Faculty{
 
@@ -35,5 +36,16 @@ public class Department extends Faculty{
         return "\nDepartment name: " + nameOfDepartment + "\nHead of department:" + headOfDepartment + "\nGroups:\n" + getGroups();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(nameOfDepartment, that.nameOfDepartment) && Objects.equals(headOfDepartment, that.headOfDepartment) && Objects.equals(groups, that.groups);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameOfDepartment, headOfDepartment, groups);
+    }
 }
