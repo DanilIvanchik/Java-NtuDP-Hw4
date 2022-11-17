@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class University {
     private String nameOfUniversity;
@@ -32,5 +33,18 @@ public class University {
 
     public String toString() {
         return "\nUniversity name: " + nameOfUniversity + "\nHead of university: " + headOfUniversity + "\nFaculties: " + getFaculties();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        University that = (University) o;
+        return Objects.equals(nameOfUniversity, that.nameOfUniversity) && Objects.equals(headOfUniversity, that.headOfUniversity) && Objects.equals(faculties, that.faculties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameOfUniversity, headOfUniversity, faculties);
     }
 }
